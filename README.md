@@ -18,20 +18,13 @@
 
 ## Introduction
 
-Bibliotheca is our starting point to create libraries.
+Compono is our Next.js/React component library.
 
 <br/>
 
 ## Composition
 
-This template kit is composed of:
-
-- [Size Limit](https://github.com/ai/size-limit/)
-- [Github Actions](https://github.com/features/actions)
-- [Typescript](https://github.com/microsoft/TypeScript) (tsc)
-- [ESLint](https://github.com/eslint/eslint)
-- [Prettier](https://github.com/prettier/prettier)
-- [Vite](https://github.com/vitejs/vite) for dev purposes
+This component kit is composed of:
 
 <br/>
 
@@ -47,7 +40,7 @@ This template kit is composed of:
 
 <br/>
 
-## Bibliotheca in use
+## Compono in use
 
 - [@studio-freight/lenis](https://github.com/studio-freight/lenis) Tiny, Performant, Vanilla JS, Smooth Scroll library.
 - [@studio-freight/tempus](https://github.com/studio-freight/tempus) One rAF to rule them all.

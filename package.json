@@ -1,6 +1,6 @@
 {
-  "name": "bibliotheca",
-  "version": "1.0.0",
+  "name": "@studio-freight/compono",
+  "version": "0.0.1",
   "description": "",
   "files": [
     "dist/**/*",
@@ -8,13 +8,13 @@
   ],
   "sideEffects": false,
   "source": "src/index.js",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
+  "main": "dist/compono.js",
+  "umd:main": "dist/compono.umd.js",
+  "module": "dist/compono.mjs",
   "types": "dist/types/index.d.ts",
   "exports": {
-    "require": "./dist/index.js",
-    "default": "./dist/index.modern.mjs"
+    "require": "./dist/compono.js",
+    "default": "./dist/compono.modern.mjs"
   },
   "scripts": {
     "dev": "vite",
@@ -45,15 +45,18 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.2",
     "eslint": "^8.33.0",
+    "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "microbundle": "^0.15.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
+    "sass": "^1.58.0",
     "typescript": "^4.9.4",
     "vite": "^4.0.4"
   },
@@ -66,5 +69,18 @@
       "limit": "2 kB",
       "path": "dist/index.mjs"
     }
-  ]
+  ],
+  "dependencies": {
+    "@radix-ui/react-select": "^1.2.0",
+    "@studio-freight/hamo": "^0.6.11",
+    "@studio-freight/react-lenis": "^0.0.6",
+    "clsx": "^1.2.1",
+    "embla-carousel-autoplay": "^7.0.9",
+    "embla-carousel-react": "^7.0.9",
+    "gsap": "^3.11.4",
+    "next": "^13.1.6",
+    "next-seo": "^5.15.0",
+    "react-use": "^17.4.0",
+    "react-use-measure": "^2.1.1"
+  }
 }
