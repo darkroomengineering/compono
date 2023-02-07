@@ -3,19 +3,18 @@
   "version": "0.0.2",
   "description": "our components, tidy and ready to use",
   "files": [
-    "dist",
+    "dist/**/*",
     "README.md"
   ],
   "source": "./src/index.jsx",
-  "main": "./dist/compono.umd.js",
+  "main": "./dist/compono.es.js",
+  "umd:main": "./dist/compono.umd.js",
   "module": "./dist/compono.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/compono.es.js",
-      "require": "./dist/compono.umd.js"
-    }
-  },
   "types": "./dist/types/index.d.ts",
+  "exports": {
+    "require": "./dist/compono.umd.js",
+    "default": "./dist/compono.es.js"
+  },
   "scripts": {
     "dev": "npm-run-all --parallel build dev:docs",
     "dev:docs": "npm run dev:docs --prefix ./docs",
@@ -41,6 +40,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/studio-freight/compono.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [],
   "author": "@studio-freight",
