@@ -1,4 +1,4 @@
-import { Button, Marquee } from '../../../dist/compono.es'
+import { Button, Marquee } from '../../../dist/compono'
 
 export default function Home() {
   return (

@@ -3,39 +3,27 @@
   "version": "0.0.3",
   "description": "our components, tidy and ready to use",
   "files": [
-    "dist/**/*",
-    "README.md"
+    "dist/**/*"
   ],
-  "source": "./src/index.jsx",
-  "main": "./dist/compono.es.js",
-  "umd:main": "./dist/compono.umd.js",
-  "module": "./dist/compono.es.js",
-  "types": "./dist/types/index.d.ts",
+  "source": "src/index.jsx",
+  "main": "dist/compono.js",
+  "umd:main": "dist/compono.umd.js",
+  "module": "dist/compono.mjs",
+  "types": "dist/types/index.d.ts",
   "exports": {
-    "require": "./dist/compono.umd.js",
-    "default": "./dist/compono.es.js"
+    "require": "./dist/compono.js",
+    "default": "./dist/compono.modern.mjs"
   },
   "scripts": {
-    "dev": "npm-run-all --parallel build dev:docs",
+    "dev": "npm-run-all build dev:docs",
     "dev:docs": "npm run dev:docs --prefix ./docs",
-    "build": "npm-run-all build:lib build:types",
-    "build:lib": "vite build",
-    "build:types": "tsc --lib 'ESNext' --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./dist/compono.es.js",
+    "clean": "rimraf dist",
+    "build": "npm-run-all --parallel clean build:dist build:types",
+    "build:dist": "microbundle build -i src/index.jsx --o ./dist --jsx React.createElement",
+    "build:types": "tsc --target esnext --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./src/index.jsx",
     "prepublishOnly": "npm version patch",
     "postpublish": "git push --follow-tags",
     "preversion": "npm run build"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "repository": {
     "type": "git",
@@ -59,29 +47,33 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
+    "microbundle": "^0.15.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
     "prettier-eslint": "^15.0.1",
-    "vite": "^4.1.1",
-    "typescript": "^4.9.5"
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
   },
   "dependencies": {
     "@radix-ui/react-select": "^1.2.0",
     "@studio-freight/hamo": "^0.6.12",
-    "@studio-freight/react-lenis": "^0.0.8",
+    "@studio-freight/react-lenis": "^0.0.9",
     "clsx": "^1.2.1",
     "embla-carousel-autoplay": "^7.0.9",
     "embla-carousel-react": "^7.0.9",
     "gsap": "^3.11.4",
     "lottie-web": "^5.10.2",
-    "next": "^13.1.6",
     "next-seo": "^5.15.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-use": "^17.4.0",
     "react-use-measure": "^2.1.1",
-    "sass": "^1.58.0",
     "stats.js": "^0.17.0"
+  },
+  "peerDependencies": {
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.58.0"
   },
   "size-limit": [
     {

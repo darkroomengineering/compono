@@ -1,5 +1,9 @@
 lockfileVersion: 5.4
 
+overrides:
+  react-is: 18.2.0
+  throttle-debounce: 5.0.0
+
 specifiers:
   '@builder.io/partytown': ^0.7.5
   '@next/bundle-analyzer': ^13.1.6
@@ -1841,7 +1845,7 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.21.0
-      '@types/estree': 1.0.0
+      '@types/estree': 0.0.51
     dev: true
 
   /@types/eslint/8.21.0:
@@ -4810,7 +4814,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      react-is: 16.13.1
+      react-is: 18.2.0
     dev: true
 
   /proxy-from-env/1.1.0:
@@ -4871,8 +4875,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-is/16.13.1:
-    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+  /react-is/18.2.0:
+    resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
   /react/17.0.2:

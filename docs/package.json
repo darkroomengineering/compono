@@ -43,5 +43,11 @@
     "prettier-eslint": "^15.0.1",
     "sass": "^1.58.0",
     "stats.js": "^0.17.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-is": "18.2.0",
+      "throttle-debounce": "5.0.0"
+    }
   }
 }
