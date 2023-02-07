@@ -1,64 +1,85 @@
 {
   "name": "@studio-freight/compono",
   "version": "0.0.1",
-  "description": "",
+  "description": "our components, tidy and ready to use",
   "files": [
-    "dist/**/*",
-    "bundled/**/*"
+    "dist",
+    "README.md"
   ],
-  "sideEffects": false,
-  "source": "src/index.js",
-  "main": "dist/compono.js",
-  "umd:main": "dist/compono.umd.js",
-  "module": "dist/compono.mjs",
-  "types": "dist/types/index.d.ts",
+  "source": "./src/index.jsx",
+  "main": "./dist/compono.umd.js",
+  "module": "./dist/compono.es.js",
   "exports": {
-    "require": "./dist/compono.js",
-    "default": "./dist/compono.modern.mjs"
+    ".": {
+      "import": "./dist/compono.es.js",
+      "require": "./dist/compono.umd.js"
+    }
   },
+  "types": "./dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "clean": "npm-run-all --parallel clean:bundled clean:dist",
-    "clean:bundled": "rm -rf bundled",
-    "clean:dist": "rm -rf dist",
+    "dev": "npm-run-all --parallel build dev:docs",
+    "dev:docs": "npm run dev:docs --prefix ./docs",
+    "build": "npm-run-all build:lib build:types",
+    "build:lib": "vite build",
+    "build:types": "tsc --lib 'ESNext' --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./dist/compono.es.js",
     "prepublishOnly": "npm version patch",
     "postpublish": "git push --follow-tags",
-    "preversion": "npm run build",
-    "build": "npm-run-all --parallel clean build:dist build:bundle build:types",
-    "build:types": "tsc --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./src/index.js",
-    "build:dist": "microbundle build -i src/ --o ./dist",
-    "build:bundle": "npm-run-all build:bundle-full build:bundle-min",
-    "build:bundle-full": "microbundle build -i src/ --o ./bundled/index.js --no-sourcemap --no-pkg-main --external none --name $npm_package_name --format umd  --no-compress",
-    "build:bundle-min": "microbundle build -i src/ --o ./bundled/index.min.js --no-sourcemap --no-pkg-main --external none --name $npm_package_name --format umd"
+    "preversion": "npm run build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/studio-freight/bibliotheca.git"
+    "url": "git+https://github.com/studio-freight/compono.git"
   },
   "keywords": [],
   "author": "@studio-freight",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/studio-freight/bibliotheca/issues"
+    "url": "https://github.com/studio-freight/compono/issues"
   },
-  "homepage": "https://github.com/studio-freight/bibliotheca#readme",
+  "homepage": "https://github.com/studio-freight/compono#readme",
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.1.2",
+    "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.33.0",
-    "eslint-config-next": "^13.1.6",
+    "eslint-config-next": "13.1.6",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-config-standard": "^17.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "microbundle": "^0.15.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
+    "prettier-eslint": "^15.0.1",
+    "vite": "^4.1.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "^1.2.0",
+    "@studio-freight/hamo": "^0.6.12",
+    "@studio-freight/react-lenis": "^0.0.8",
+    "clsx": "^1.2.1",
+    "embla-carousel-autoplay": "^7.0.9",
+    "embla-carousel-react": "^7.0.9",
+    "gsap": "^3.11.4",
+    "lottie-web": "^5.10.2",
+    "next": "^13.1.6",
+    "next-seo": "^5.15.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-use": "^17.4.0",
+    "react-use-measure": "^2.1.1",
     "sass": "^1.58.0",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.4"
+    "stats.js": "^0.17.0"
   },
   "size-limit": [
     {
@@ -69,18 +90,5 @@
       "limit": "2 kB",
       "path": "dist/index.mjs"
     }
-  ],
-  "dependencies": {
-    "@radix-ui/react-select": "^1.2.0",
-    "@studio-freight/hamo": "^0.6.11",
-    "@studio-freight/react-lenis": "^0.0.6",
-    "clsx": "^1.2.1",
-    "embla-carousel-autoplay": "^7.0.9",
-    "embla-carousel-react": "^7.0.9",
-    "gsap": "^3.11.4",
-    "next": "^13.1.6",
-    "next-seo": "^5.15.0",
-    "react-use": "^17.4.0",
-    "react-use-measure": "^2.1.1"
-  }
+  ]
 }

@@ -12,6 +12,7 @@ dist
 bundled
 dist-ssr
 *.local
+.parcel-cache
 
 # Editor directories and files
 .vscode/*
