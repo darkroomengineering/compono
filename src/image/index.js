@@ -1,6 +1,5 @@
 import cn from 'clsx'
 import NextImage from 'next/image'
-import s from './image.module.scss'
 
 export function Image({ className, style, loading = 'eager', objectFit = 'cover', quality = 90, alt = '', ...props }) {
   return (
