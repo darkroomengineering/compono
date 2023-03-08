@@ -1,8 +1,8 @@
 import { useRect } from '@studio-freight/hamo'
 import { useLenis } from '@studio-freight/react-lenis'
+import { truncate } from 'lib/maths'
 import { useRef } from 'react'
 import { useWindowSize } from 'react-use'
-import { truncate } from '../../lib/maths'
 import s from './marquee-scroll.module.scss'
 
 export function MarqueeScroll({ children, className, repeat = 2 }) {

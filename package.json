@@ -23,7 +23,6 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/types.d.ts",
-  "type": "module",
   "scripts": {
     "dev": "parcel watch",
     "build": "parcel build",

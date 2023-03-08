@@ -1,11 +1,11 @@
 import { useLenis } from '@studio-freight/react-lenis'
+import { clamp, mapRange } from 'lib/maths'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import useMeasure from 'react-use-measure'
-import { clamp, mapRange } from '../../lib/maths'
 import s from './scrollbar.module.scss'
 
-export function Scrollbar() {
+export function Scrollbar({ theme: { color, border, borderSize, borderRadius, minHeight, positionRight } }) {
   const thumb = useRef()
   const { width: windowWidth, height: windowHeight } = useWindowSize()
   const lenis = useLenis()
@@ -49,7 +49,17 @@ export function Scrollbar() {
   }, [clicked, windowHeight, windowWidth, lenis, innerHeight])
 
   return (
-    <div className={s.scrollbar}>
+    <div
+      className={s.scrollbar}
+      style={{
+        '--color': theme.color,
+        '--border': theme.border,
+        '--min-height': theme.minHeight,
+        '--position-right': theme.positionRight,
+        '--border-size': theme.borderSize,
+        '--border-radius': theme.borderRadius,
+      }}
+    >
       <div ref={innerMeasureRef} className={s.inner}>
         <div
           className={s.thumb}

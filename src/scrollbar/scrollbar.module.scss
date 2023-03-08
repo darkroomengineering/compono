@@ -3,6 +3,14 @@
 // hide native scrollbar
 
 .scrollbar {
+  --color: #ff0000;
+  --border: #fff;
+  --width: desktop-vw(8px);
+  --min-height: desktop-vw(48px);
+  --position-right: desktop-vw(8px);
+  --border-size: desktop-vw(1px);
+  --border-radius: desktop-vw(4px);
+
   position: fixed;
   right: 0;
   bottom: 0;
@@ -16,13 +24,13 @@
   }
 
   .thumb {
-    min-height: desktop-vw(48px);
-    width: desktop-vw(8px);
-    background-color: var(--red);
+    min-height: var(--min-height);
+    width: var(--width);
+    background-color: var(--color);
     position: absolute;
-    right: desktop-vw(8px);
-    border-radius: desktop-vw(4px);
-    border: desktop-vw(1px) solid var(--black);
+    right: var(---position-right);
+    border-radius: var(--border-radius);
+    border: var(--border-size) solid var(--border);
     cursor: grab;
   }
 
