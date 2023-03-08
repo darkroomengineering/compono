@@ -2,20 +2,9 @@
   "name": "@studio-freight/compono",
   "version": "0.0.3",
   "description": "our components, tidy and ready to use",
-  "files": [
-    "dist/**/*"
-  ],
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/studio-freight/compono.git"
-  },
-  "scripts": {
-    "dev": "parcel watch",
-    "build": "parcel build"
   },
   "publishConfig": {
     "access": "public"
@@ -27,6 +16,20 @@
     "url": "https://github.com/studio-freight/compono/issues"
   },
   "homepage": "https://github.com/studio-freight/compono#readme",
+  "files": [
+    "dist/**/*"
+  ],
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "dev": "parcel watch",
+    "build": "parcel build",
+    "prepublishOnly": "npm version patch",
+    "postpublish": "git push --follow-tags",
+    "preversion": "npm run build"
+  },
   "dependencies": {
     "@radix-ui/react-select": "^1.2.0",
     "@studio-freight/hamo": "^0.6.12",
