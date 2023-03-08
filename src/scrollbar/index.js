@@ -1,8 +1,8 @@
 import { useLenis } from '@studio-freight/react-lenis'
-import { clamp, mapRange } from 'lib/maths'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import useMeasure from 'react-use-measure'
+import { clamp, mapRange } from '../../lib/maths'
 import s from './scrollbar.module.scss'
 
 export function Scrollbar({ theme: { color, border, borderSize, borderRadius, minHeight, positionRight } }) {
