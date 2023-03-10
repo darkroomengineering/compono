@@ -1,7 +1,7 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { forwardRef } from 'react'
 
-export const Select = forwardRef(function SelectFn({ children, ...props }, forwardedRef) {
+const Select = forwardRef(function SelectFn({ children, ...props }, forwardedRef) {
   return (
     <SelectPrimitive.Root {...props}>
       <SelectPrimitive.Trigger ref={forwardedRef}>
@@ -17,7 +17,9 @@ export const Select = forwardRef(function SelectFn({ children, ...props }, forwa
   )
 })
 
-export const Item = forwardRef(function SelectItemFn({ children, ...props }, forwardedRef) {
+Select.displayName = 'Select'
+
+const Item = forwardRef(function SelectItemFn({ children, ...props }, forwardedRef) {
   return (
     <SelectPrimitive.Item {...props} ref={forwardedRef}>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -25,3 +27,7 @@ export const Item = forwardRef(function SelectItemFn({ children, ...props }, for
     </SelectPrimitive.Item>
   )
 })
+
+Select.Item = Item
+
+export { Select }
