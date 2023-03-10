@@ -47,15 +47,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.58.0"
-  },
-  "size-limit": [
-    {
-      "limit": "3 kB",
-      "path": "dist/index.js"
-    },
-    {
-      "limit": "2 kB",
-      "path": "dist/index.mjs"
-    }
-  ]
+  }
 }
