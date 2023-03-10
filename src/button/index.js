@@ -1,4 +1,4 @@
-import { Link } from '../link/index.jsx'
+import { Link } from '../link/index.js'
 
 export function Button({ children, href, className, ...props }) {
   return (
