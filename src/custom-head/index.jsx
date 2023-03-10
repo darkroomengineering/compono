@@ -7,7 +7,7 @@ export function CustomHead({
   image,
   keywords,
   theme = '#ff00ff',
-  twitter: { handle = '@studiofreight' },
+  twitter = { handle: '@studiofreight' },
 }) {
   return (
     <>

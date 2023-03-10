@@ -4,7 +4,7 @@
 
 .scrollbar {
   --color: #ff0000;
-  --border: #fff;
+  --border-color: #fff;
   --width: desktop-vw(8px);
   --min-height: desktop-vw(48px);
   --position-right: desktop-vw(8px);
@@ -30,7 +30,7 @@
     position: absolute;
     right: var(---position-right);
     border-radius: var(--border-radius);
-    border: var(--border-size) solid var(--border);
+    border: var(--border-size) solid var(--border-color);
     cursor: grab;
   }
 

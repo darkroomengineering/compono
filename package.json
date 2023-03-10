@@ -16,13 +16,12 @@
     "url": "https://github.com/studio-freight/compono/issues"
   },
   "homepage": "https://github.com/studio-freight/compono#readme",
+  "main": "src/index.js",
   "files": [
-    "dist/**/*"
+    "src",
+    "lib"
   ],
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types.d.ts",
+  "type": "module",
   "scripts": {
     "dev": "parcel watch",
     "build": "parcel build",
@@ -34,17 +33,19 @@
     "preversion": "npm run build"
   },
   "dependencies": {
-    "@radix-ui/react-select": "^1.2.0",
+    "@radix-ui/react-select": "^1.2.1",
     "@studio-freight/hamo": "^0.6.12",
     "@studio-freight/react-lenis": "^0.0.12",
     "clsx": "^1.2.1",
-    "embla-carousel-autoplay": "^7.0.9",
-    "embla-carousel-react": "^7.0.9",
+    "embla-carousel-autoplay": "^7.1.0",
+    "embla-carousel-react": "^7.1.0",
     "gsap": "^3.11.4",
     "lottie-web": "^5.10.2",
     "next-seo": "^5.15.0",
     "react-use": "^17.4.0",
     "react-use-measure": "^2.1.1",
+    "next": "^13.2.3",
+    "react": "^18.2.0",
     "stats.js": "^0.17.0"
   },
   "peerDependencies": {
@@ -52,21 +53,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.58.0"
-  },
-  "devDependencies": {
-    "@parcel/packager-ts": "^2.8.3",
-    "@parcel/transformer-sass": "^2.8.3",
-    "@parcel/transformer-typescript-types": "^2.8.3",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "nextjs": "^0.0.3",
-    "parcel": "^2.8.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^4.3.1",
-    "typescript": "^4.9.5",
-    "@size-limit/preset-small-lib": "^8.2.4",
-    "size-limit": "^8.2.4"
   },
   "size-limit": [
     {

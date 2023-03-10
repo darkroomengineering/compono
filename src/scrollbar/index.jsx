@@ -5,7 +5,16 @@ import useMeasure from 'react-use-measure'
 import { clamp, mapRange } from '../../lib/maths'
 import s from './scrollbar.module.scss'
 
-export function Scrollbar({ theme: { color, border, borderSize, borderRadius, minHeight, positionRight } }) {
+export function Scrollbar({
+  theme = {
+    color: '#ff0000',
+    borderColor: '#fff',
+    borderSize: '1px',
+    borderRadius: '4px',
+    minHeight: '48px',
+    positionRight: '10px',
+  },
+}) {
   const thumb = useRef()
   const { width: windowWidth, height: windowHeight } = useWindowSize()
   const lenis = useLenis()
