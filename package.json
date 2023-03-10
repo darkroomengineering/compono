@@ -23,11 +23,6 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "parcel watch",
-    "build": "parcel build",
-    "prebuild": "npm run clean",
-    "size": "size-limit",
-    "clean": "rimraf dist && rimraf .parcel-cache",
     "prepublishOnly": "npm version patch",
     "postpublish": "git push --follow-tags",
     "preversion": "npm run build"
