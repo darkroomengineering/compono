@@ -24,8 +24,7 @@
   "type": "module",
   "scripts": {
     "prepublishOnly": "npm version patch",
-    "postpublish": "git push --follow-tags",
-    "preversion": "npm run build"
+    "postpublish": "git push --follow-tags"
   },
   "dependencies": {
     "@radix-ui/react-select": "^1.2.1",
