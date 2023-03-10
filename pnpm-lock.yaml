@@ -9,7 +9,7 @@ specifiers:
   embla-carousel-react: ^7.1.0
   gsap: ^3.11.4
   lottie-web: ^5.10.2
-  next: ^13.2.3
+  next: ^13.2.4
   next-seo: ^5.15.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -27,7 +27,7 @@ dependencies:
   embla-carousel-react: 7.1.0_react@18.2.0
   gsap: 3.11.4
   lottie-web: 5.10.2
-  next: 13.2.4_wiv434v7erz4aedd5whhdwmpv4
+  next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.15.0_ld2jel3hspngo3u5lti2kgl2sq
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1227,12 +1227,12 @@ packages:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
     dependencies:
-      next: 13.2.4_wiv434v7erz4aedd5whhdwmpv4
+      next: 13.2.4_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next/13.2.4_wiv434v7erz4aedd5whhdwmpv4:
+  /next/13.2.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-g1I30317cThkEpvzfXujf0O4wtaQHtDCLhlivwlTJ885Ld+eOgcz7r3TGQzeU+cSRoNHtD8tsJgzxVdYojFssw==}
     engines: {node: '>=14.6.0'}
     hasBin: true
@@ -1259,7 +1259,6 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      sass: 1.58.3
       styled-jsx: 5.1.1_react@18.2.0
     optionalDependencies:
       '@next/swc-android-arm-eabi': 13.2.4
@@ -1665,7 +1664,7 @@ packages:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
     dependencies:
       spdx-expression-parse: 3.0.1
-      spdx-license-ids: 3.0.12
+      spdx-license-ids: 3.0.13
     dev: false
 
   /spdx-exceptions/2.3.0:
@@ -1676,11 +1675,11 @@ packages:
     resolution: {integrity: sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==}
     dependencies:
       spdx-exceptions: 2.3.0
-      spdx-license-ids: 3.0.12
+      spdx-license-ids: 3.0.13
     dev: false
 
-  /spdx-license-ids/3.0.12:
-    resolution: {integrity: sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==}
+  /spdx-license-ids/3.0.13:
+    resolution: {integrity: sha512-XkD+zwiqXHikFZm4AX/7JSCXA98U5Db4AFd5XUg/+9UNtnH75+Z9KxtpYiJZx36mUDVOwH83pl7yvCer6ewM3w==}
     dev: false
 
   /stack-generator/2.0.10:
