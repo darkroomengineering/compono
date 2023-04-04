@@ -29,7 +29,7 @@
   "dependencies": {
     "@radix-ui/react-select": "^1.2.1",
     "@studio-freight/hamo": "^0.6.12",
-    "@studio-freight/react-lenis": "^0.0.12",
+    "@studio-freight/react-lenis": "^0.0.13",
     "clsx": "^1.2.1",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
