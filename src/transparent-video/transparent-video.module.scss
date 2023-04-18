@@ -1,0 +1,31 @@
+// .canvas {
+//   position: relative;
+//   z-index: 1;
+//   aspect-ratio: 1;
+// }
+
+// .video {
+//   position: absolute;
+//   visibility: hidden;
+// }
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+  .video {
+    display: block;
+  }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    -webkit-mask-image: url('/Dividends-alpha.mp4');
+    mask-image: url('/Dividends-alpha.mp4');
+    mask-mode: alpha;
+    mask-repeat: no-repeat;
+  }
+}

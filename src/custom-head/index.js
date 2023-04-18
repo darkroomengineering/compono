@@ -2,11 +2,11 @@ import { NextSeo } from 'next-seo'
 import NextHead from 'next/head'
 
 export function CustomHead({
-  title = '',
+  title,
   description,
   image,
   keywords,
-  theme = '#ff00ff',
+  theme = { mask: '#ff00ff', tile: '#ff00ff', color: '#ff00ff' },
   twitter = { handle: '@studiofreight' },
 }) {
   return (
@@ -21,8 +21,6 @@ export function CustomHead({
         <meta name="author" content="Studio Freight" />
         <meta name="referrer" content="no-referrer" />
         <meta name="format-detection" content="telephone=no" />
-        <meta httpEquiv="x-dns-prefetch-control" content="off" />
-        <meta httpEquiv="Window-Target" content="_value" />
         <meta name="geo.region" content="US" />
 
         {/* START FAVICON */}
@@ -31,9 +29,9 @@ export function CustomHead({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color={theme} />
-        <meta name="msapplication-TileColor" content={theme} />
-        <meta name="theme-color" content={theme} />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color={theme.mask} />
+        <meta name="msapplication-TileColor" content={theme.tile} />
+        <meta name="theme-color" content={theme.color} />
         <link rel="icon" href="/favicon.ico" />
         {/* END FAVICON */}
 
@@ -50,8 +48,8 @@ export function CustomHead({
           images: [
             {
               url: image ? image.url : '/og-image.jpg',
-              width: image ? image.width : 1200,
-              height: image ? image.height : 630,
+              width: image.width ? image.width : 1200,
+              height: image.height ? image.height : 630,
               alt: title,
             },
           ],
