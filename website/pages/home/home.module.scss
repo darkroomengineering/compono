@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    z-index: 0;
+  }
+}
