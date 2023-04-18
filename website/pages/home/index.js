@@ -1,4 +1,3 @@
-import { TransparentVideo } from '../../../src/transparent-video'
 import { Layout } from '../../layouts/default'
 import s from './home.module.scss'
 
@@ -7,7 +6,6 @@ export default function Home() {
     <Layout theme="light">
       <div className={s.wrapper}>
         <h1>this is a bit of text</h1>
-        <TransparentVideo src={'/Dividends.mp4'} alphaMask={'/Dividends-alpha.mp4'} />
       </div>
     </Layout>
   )
