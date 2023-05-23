@@ -1,4 +1,4 @@
-import { useDocumentReadyState, useIsVisible } from '@studio-freight/hamo'
+import { useDocumentReadyState, useIntersectionObserver } from '@studio-freight/hamo'
 import { useEffect, useRef, useState } from 'react'
 
 export function Lottie({ animation, speed = 1, loop = true, autoplay = true, className }) {
@@ -6,7 +6,7 @@ export function Lottie({ animation, speed = 1, loop = true, autoplay = true, cla
   const animator = useRef(null)
   const [lottie, setLottie] = useState()
 
-  const { setRef, inView } = useIsVisible({
+  const [setRef, inView] = useIntersectionObserver({
     threshold: 0,
   })
   const readyState = useDocumentReadyState()
