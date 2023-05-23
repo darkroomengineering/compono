@@ -1,4 +1,4 @@
-import { useIsVisible, useRect } from '@studio-freight/hamo'
+import { useIntersectionObserver, useRect } from '@studio-freight/hamo'
 import { useLenis } from '@studio-freight/react-lenis'
 import { cloneElement, useState } from 'react'
 import { useWindowSize } from 'react-use'
@@ -7,7 +7,7 @@ import s from './fixed-slides.module.scss'
 export function FixedSlides({ length, children }) {
   const [contentIndex, setContentIndex] = useState()
   const [setRef, rect] = useRect()
-  const { setRef: viewRef, inView } = useIsVisible({ threshold: 0.2 })
+  const [viewRef, inView] = useIntersectionObserver({ threshold: 0.2 })
   const { height: windowHeight } = useWindowSize()
 
   useLenis(({ scroll }) => {
