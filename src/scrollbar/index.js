@@ -1,9 +1,9 @@
 import { useLenis } from '@studio-freight/react-lenis'
 import { useEffect, useRef, useState } from 'react'
-import { useWindowSize } from 'react-use'
-import useMeasure from 'react-use-measure'
+import { useWindowSize } from '@studio-freight/hamo'
 import { clamp, mapRange } from '../../lib/maths'
 import s from './scrollbar.module.scss'
+import { useRect } from '@studio-freight/hamo'
 
 export function Scrollbar({
   theme = {
@@ -18,8 +18,8 @@ export function Scrollbar({
   const thumb = useRef()
   const { width: windowWidth, height: windowHeight } = useWindowSize()
   const lenis = useLenis()
-  const [innerMeasureRef, { height: innerHeight }] = useMeasure()
-  const [thumbMeasureRef, { height: thumbHeight }] = useMeasure()
+  const [innerMeasureRef, { height: innerHeight }] = useRect()
+  const [thumbMeasureRef, { height: thumbHeight }] = useRect()
 
   useLenis(({ scroll, limit }) => {
     const progress = scroll / limit

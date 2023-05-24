@@ -1,7 +1,6 @@
-import { useRect } from '@studio-freight/hamo'
+import { useRect, useWindowSize } from '@studio-freight/hamo'
 import { useLenis } from '@studio-freight/react-lenis'
 import { useRef } from 'react'
-import { useWindowSize } from 'react-use'
 import { truncate } from '../../lib/maths'
 import s from './marquee-scroll.module.scss'
 

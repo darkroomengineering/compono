@@ -1,7 +1,6 @@
-import { useIsTouchDevice } from '@studio-freight/hamo'
+import { useIsTouchDevice, useWindowSize } from '@studio-freight/hamo'
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
-import { useWindowSize } from 'react-use'
 
 export function Kinesis({ children, className, speed = 100 }) {
   const { width, height } = useWindowSize()

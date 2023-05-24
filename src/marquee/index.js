@@ -1,7 +1,6 @@
 import cn from 'clsx'
-import { useRef } from 'react'
-import { useIntersection } from 'react-use'
 import s from './marquee.module.scss'
+import { useIntersectionObserver } from '@studio-freight/hamo'
 
 const Marquee = ({
   children,
@@ -13,13 +12,11 @@ const Marquee = ({
   animationStart = true,
   ...props
 }) => {
-  const ref = useRef()
-
-  const intersection = useIntersection(ref, { threshold: 0 })
+  const [setIntersectionRef, intersection] = useIntersectionObserver({ threshold: 0 })
 
   return (
     <div
-      ref={ref}
+      ref={setIntersectionRef}
       {...props}
       className={cn(className, s.marquee, inverted && s.inverted, intersection?.isIntersecting && 'running')}
       style={{

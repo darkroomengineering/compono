@@ -1,13 +1,11 @@
-import { useIntersectionObserver, useRect } from '@studio-freight/hamo'
+import { useRect, useWindowSize } from '@studio-freight/hamo'
 import { useLenis } from '@studio-freight/react-lenis'
 import { cloneElement, useState } from 'react'
-import { useWindowSize } from 'react-use'
 import s from './fixed-slides.module.scss'
 
 export function FixedSlides({ length, children }) {
   const [contentIndex, setContentIndex] = useState()
   const [setRef, rect] = useRect()
-  const [viewRef, inView] = useIntersectionObserver({ threshold: 0.2 })
   const { height: windowHeight } = useWindowSize()
 
   useLenis(({ scroll }) => {
@@ -33,7 +31,7 @@ export function FixedSlides({ length, children }) {
           })}
         </div>
       </div>
-      {inView && <ProgressBar progress={`${((contentIndex + 1) * 100) / length}%`} />}
+      <ProgressBar progress={`${((contentIndex + 1) * 100) / length}%`} />
     </div>
   )
 }

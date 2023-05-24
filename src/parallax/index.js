@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react'
-import { useWindowSize } from 'react-use'
+import { useWindowSize } from '@studio-freight/hamo'
 
 export function Parallax({ className, children, speed = 1, id = 'parallax', position }) {
   const trigger = useRef()
