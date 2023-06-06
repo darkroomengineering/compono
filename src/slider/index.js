@@ -15,6 +15,7 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
   // eslint-disable-next-line no-unused-vars
   const [_, setScrollSnaps] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const autoplay = Autoplay({ delay: emblaApi?.autoplay?.delay || null }, (emblaRoot) => emblaRoot.parentElement)
   const [emblaRef, embla] = useEmblaCarousel(emblaApi, emblaApi.autoplay ? [autoplay] : [])
 
@@ -26,21 +27,24 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
     embla && embla.scrollNext()
   }, [embla])
 
-  const scrollTo = useCallback(
-    (index) => {
-      embla && embla.scrollTo(index)
-    },
-    [embla]
-  )
+  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [embla])
+
+  const getScrollProgress = useCallback(() => {
+    embla && setScrollProgress(Math.max(0, Math.min(1, embla.scrollProgress())))
+  }, [embla])
+
+  const getScrollSnap = useCallback(() => {
+    setCurrentIndex(embla.selectedScrollSnap())
+    setScrollSnaps(embla.scrollSnapList())
+  }, [embla])
 
   useEffect(() => {
-    const onSelect = () => {
-      setCurrentIndex(embla.selectedScrollSnap())
-    }
     if (embla) {
-      setScrollSnaps(embla.scrollSnapList())
-      embla.on('select', onSelect)
-      onSelect()
+      getScrollSnap()
+      getScrollProgress()
+      embla.on('select', getScrollSnap)
+      embla.on('scroll', getScrollProgress)
+      embla.on('reInit', getScrollProgress)
     }
   }, [embla])
 
@@ -58,6 +62,7 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
         scrollPrev,
         scrollNext,
         scrollTo,
+        scrollProgress,
       })
     : null
 }
