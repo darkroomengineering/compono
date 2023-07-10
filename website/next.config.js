@@ -1,14 +1,3 @@
-const runtimeCaching = require('next-pwa/cache')
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  runtimeCaching,
-  disable: process.env.NODE_ENV === 'development',
-  buildExcludes: [/middleware-manifest.json$/],
-  maximumFileSizeToCacheInBytes: 4000000,
-})
-const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -16,7 +5,7 @@ const path = require('path')
 
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@studio-freight/compono'],
+  transpilePackages: [],
   experimental: {
     // optimizeCss: true,
     legacyBrowsers: false,
@@ -103,8 +92,6 @@ const nextConfig = {
       }
     )
 
-    config.plugins.push(new DuplicatePackageCheckerPlugin())
-
     return config
   },
   headers: async () => {
@@ -140,7 +127,7 @@ const nextConfig = {
 }
 
 module.exports = () => {
-  const plugins = [withPWA, withBundleAnalyzer]
+  const plugins = [withBundleAnalyzer]
   return plugins.reduce((acc, plugin) => plugin(acc), {
     ...nextConfig,
   })
