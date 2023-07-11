@@ -36,15 +36,20 @@
     "embla-carousel-react": "8.0.0-rc10",
     "gsap": "^3.12.2",
     "lottie-web": "^5.12.2",
-    "next": "^13.4.9",
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.63.6",
     "next-seo": "^6.1.0",
-    "react": "^18.2.0",
     "stats.js": "^0.17.0"
   },
   "peerDependencies": {
-    "next": "^13.4.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.63.0"
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.63.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "13.4.9"
   }
 }
