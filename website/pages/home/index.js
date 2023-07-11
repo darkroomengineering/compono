@@ -1,12 +1,16 @@
-import { Layout } from '../../layouts/default'
+import { Lottie } from '@studio-freight/compono'
+import { Layout } from 'layouts/default'
 import s from './home.module.scss'
+
+import LottieFile from '/public/lotties/animation.json'
 
 export default function Home() {
   return (
     <Layout theme="light">
-      <div className={s.wrapper}>
-        <h1>this is a bit of text</h1>
-      </div>
+      <section className={s.content}>
+        <p>hi</p>
+        <Lottie animation={LottieFile} loop />
+      </section>
     </Layout>
   )
 }
