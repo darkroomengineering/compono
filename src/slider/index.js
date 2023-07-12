@@ -1,19 +1,18 @@
 import cn from 'clsx'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
-import { forwardRef, useCallback, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import s from './slider.module.scss'
 
-const Slides = forwardRef(({ children, className }, ref) => (
-  <div className={cn(s.slider, className)} ref={ref}>
-    <div className={s.container}>{[children].flat().map((child) => child)}</div>
-  </div>
-))
-Slides.displayName = 'Slides'
+//this folder is temp
 
-function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
-  // eslint-disable-next-line no-unused-vars
-  const [_, setScrollSnaps] = useState([])
+const SliderContext = createContext({})
+
+export function useSlider() {
+  return useContext(SliderContext)
+}
+
+export const Slider = ({ children, emblaApi = { autoplay: false }, enabled = true, customProps = {} }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [scrollProgress, setScrollProgress] = useState(0)
   const autoplay = Autoplay({ delay: emblaApi?.autoplay?.delay || null }, (emblaRoot) => emblaRoot.parentElement)
@@ -35,7 +34,6 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
 
   const getScrollSnap = useCallback(() => {
     setCurrentIndex(embla.selectedScrollSnap())
-    setScrollSnaps(embla.scrollSnapList())
   }, [embla])
 
   useEffect(() => {
@@ -54,8 +52,9 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
     }
   }, [embla, enabled])
 
-  return children
-    ? children({
+  return (
+    <SliderContext.Provider
+      value={{
         emblaRef,
         currentIndex,
         setCurrentIndex,
@@ -63,10 +62,22 @@ function Slider({ children, emblaApi = { autoplay: false }, enabled = true }) {
         scrollNext,
         scrollTo,
         scrollProgress,
-      })
-    : null
+        customProps,
+      }}
+    >
+      {children}
+    </SliderContext.Provider>
+  )
+}
+
+const Slides = ({ children, className }) => {
+  const { emblaRef } = useSlider()
+
+  return (
+    <div className={cn(s.slider, className)} ref={emblaRef}>
+      <div className={s.container}>{children}</div>
+    </div>
+  )
 }
 
 Slider.Slides = Slides
-
-export { Slider }
