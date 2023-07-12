@@ -1,3 +1,4 @@
+export { Accordion } from './accordion/index.js'
 export { Button } from './button/index.js'
 export { Cursor } from './cursor/index.js'
 export { CustomHead } from './custom-head/index.js'
