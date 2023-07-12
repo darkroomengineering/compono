@@ -34,15 +34,13 @@
   }}
 >
   <Slider.Slides>
-    {devs.map((item, idx) => (
-      <div className={s['slide']} key={`slide-item-${idx}`}>
-        <div className={s['slide-inner']}>
-          <img src={item.image} alt="" className={s['slide-img']} />
-          <p className={s['slide-title']}>{item.name}</p>
-          <p className={s['slide-text']}>{item.position}</p>
-        </div>
-      </div>
-    ))}
+    {['slide me', 'slide me', 'slide me', 'slide me', 'slide me'].map(
+      (item, i) => (
+        <p className={s.slide} key={i}>
+          {item}
+        </p>
+      ),
+    )}
   </Slider.Slides>
   <SliderButtons />
 </Slider>
@@ -62,3 +60,4 @@ const SliderButtons = () => {
   )
 }
 ```
+
