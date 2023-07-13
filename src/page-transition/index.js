@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import s from './page-transition.module.scss'
 

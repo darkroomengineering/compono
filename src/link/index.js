@@ -1,5 +1,5 @@
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { forwardRef } from 'react'
 
 const SHALLOW_URLS = ['?demo=true']
