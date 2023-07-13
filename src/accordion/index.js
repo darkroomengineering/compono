@@ -17,17 +17,17 @@ export const AccordionItem = forwardRef(({ children, value, className = '' }, re
   </RadixAccordion.Item>
 ))
 
-const AccordionTrigger = forwardRef(({ children, className = '', onClick }, ref) => (
+const AccordionTrigger = forwardRef(({ children, className = '', ...props }, ref) => (
   <RadixAccordion.Header asChild>
-    <RadixAccordion.Trigger className={cn(className, s['trigger-wrapper'])} ref={ref} onClick={onClick}>
+    <RadixAccordion.Trigger className={cn(className, s['trigger-wrapper'])} ref={ref} {...props}>
       {children}
     </RadixAccordion.Trigger>
   </RadixAccordion.Header>
 ))
 
-export const AccordionContent = forwardRef(({ children, className = '' }, ref) => {
+export const AccordionContent = forwardRef(({ children, className = '', props }, ref) => {
   return (
-    <RadixAccordion.Content className={cn(className, s['content-wrapper'])} ref={ref}>
+    <RadixAccordion.Content className={cn(className, s['content-wrapper'])} ref={ref} {...props}>
       {children}
     </RadixAccordion.Content>
   )
