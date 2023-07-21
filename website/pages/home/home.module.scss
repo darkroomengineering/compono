@@ -1,12 +1,17 @@
-.wrapper {
-  position: relative;
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
 
-  h1 {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 5rem;
-    z-index: 0;
+  .title {
+    flex-grow: 1;
   }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
 }

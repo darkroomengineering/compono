@@ -1,12 +1,12 @@
-import { Layout } from '../../layouts/default'
+import { Layout } from 'layouts/default'
 import s from './home.module.scss'
 
 export default function Home() {
   return (
     <Layout theme="light">
-      <div className={s.wrapper}>
-        <h1>this is a bit of text</h1>
-      </div>
+      <section className={s.content}>
+        <p>hi</p>
+      </section>
     </Layout>
   )
 }

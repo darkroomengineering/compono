@@ -1,25 +1,14 @@
-const runtimeCaching = require('next-pwa/cache')
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  runtimeCaching,
-  disable: process.env.NODE_ENV === 'development',
-  buildExcludes: [/middleware-manifest.json$/],
-  maximumFileSizeToCacheInBytes: 4000000,
-})
-const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
 const path = require('path')
+const sassUtils = require(__dirname + '/libs/sass-utils')
+const sassVars = require(__dirname + '/config/variables.js')
 
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@studio-freight/compono'],
+  transpilePackages: [],
   experimental: {
-    // optimizeCss: true,
+    optimizeCss: true,
     legacyBrowsers: false,
+    // storyblok preview
     nextScriptWorkers: process.env.NODE_ENV !== 'development',
     urlImports: ['https://cdn.skypack.dev', 'https://unpkg.com'],
   },
@@ -30,13 +19,31 @@ const nextConfig = {
     // ADD in case you need to import SVGs in next/image component
     // dangerouslyAllowSVG: true,
     // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['images.ctfassets.net', 'assets.studiofreight.com', 'cdn.shopify.com', 'a-us.storyblok.com'],
+    domains: ['assets.studiofreight.com'],
     formats: ['image/avif', 'image/webp'],
   },
-  // add @import 'styles/_functions'; to all scss files.
   sassOptions: {
+    // add @import 'styles/_functions'; to all scss files.
     includePaths: [path.join(__dirname, 'styles')],
     prependData: `@import 'styles/_functions';`,
+    functions: {
+      'get($keys)': function (keys) {
+        keys = keys.getValue().split('.')
+        let result = sassVars
+        for (let i = 0; i < keys.length; i++) {
+          result = result[keys[i]]
+        }
+        result = sassUtils.castToSass(result)
+
+        return result
+      },
+      'getColors()': function () {
+        return sassUtils.castToSass(sassVars.colors)
+      },
+      'getThemes()': function () {
+        return sassUtils.castToSass(sassVars.themes)
+      },
+    },
   },
   webpack: (config, options) => {
     const { dir } = options
@@ -100,10 +107,8 @@ const nextConfig = {
             loader: 'graphql-tag/loader',
           },
         ],
-      }
+      },
     )
-
-    config.plugins.push(new DuplicatePackageCheckerPlugin())
 
     return config
   },
@@ -117,8 +122,8 @@ const nextConfig = {
             value: 'nosniff',
           },
           {
-            key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' https://app.storyblok.com/",
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-XSS-Protection',
@@ -140,7 +145,7 @@ const nextConfig = {
 }
 
 module.exports = () => {
-  const plugins = [withPWA, withBundleAnalyzer]
+  const plugins = []
   return plugins.reduce((acc, plugin) => plugin(acc), {
     ...nextConfig,
   })

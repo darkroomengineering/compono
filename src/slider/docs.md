@@ -6,6 +6,15 @@
 - Slides: content for slides
 - Order: Rendering order is determined explicitly by the order of declaration of the slots
 
+## useSlider context to expose methods
+-- currentIndex: current slider number 
+-- setCurrentIndex: set slider number
+-- scrollPrev: action for slide to previous
+-- scrollNext: action for slide to next
+-- scrollTo: action to slide to specific slider number
+-- scrollProgress: number between 0 and of slider progress
+-- customProps: custom object to pass user defined objects to context
+
 ## Embla-Carousel-React
 
 -- Docs: https://www.embla-carousel.com/
@@ -19,33 +28,36 @@
   emblaApi={{
     slidesToScroll: 1,
     skipSnaps: false,
-    startIndex: 1,
+    align: 'start',
     loop: true,
     autoScroll: true,
   }}
 >
-  {({ scrollPrev, scrollNext, emblaRef }) => {
-    return (
-      <Fragment>
-        <Slider.Slides ref={emblaRef}>
-          {devs.map((item, idx) => (
-            <div className={s['slide']} key={`slide-item-${idx}`}>
-              <div className={s['slide-inner']}>
-                <img src={item.image} alt="" className={s['slide-img']} />
-                <p className={s['slide-title']}>{item.name}</p>
-                <p className={s['slide-text']}>{item.position}</p>
-              </div>
-            </div>
-          ))}
-        </Slider.Slides>
-        <button onClick={scrollPrev} className={s['slide-buttons']}>
-          previous
-        </button>
-        <button onClick={scrollPrev} className={s['slide-buttons']}>
-          next
-        </button>
-      </Fragment>
-    )
-  }}
+  <Slider.Slides>
+    {['slide me', 'slide me', 'slide me', 'slide me', 'slide me'].map(
+      (item, i) => (
+        <p className={s.slide} key={i}>
+          {item}
+        </p>
+      ),
+    )}
+  </Slider.Slides>
+  <SliderButtons />
 </Slider>
+
+const SliderButtons = () => {
+  const { scrollPrev, scrollNext } = useSlider()
+
+  return (
+    <div>
+      <button onClick={scrollPrev} className={s['slide-buttons']}>
+        previous
+      </button>
+      <button onClick={scrollPrev} className={s['slide-buttons']}>
+        next
+      </button>
+    </div>
+  )
+}
 ```
+

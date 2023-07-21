@@ -20,6 +20,8 @@
 
 Compono is our Next.js/React component library.
 
+🚧 This package is not stable, API might change at any time 🚧
+
 <br/>
 
 ## Composition
