@@ -14,4 +14,9 @@
   justify-content: center;
   align-items: center;
   height: 100svh;
+
+  .accordion,
+  .accordion .content {
+    height: 50px;
+  }
 }
