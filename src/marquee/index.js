@@ -26,7 +26,7 @@ const Marquee = ({
       }}
     >
       {new Array(repeat).fill(children).map((_, i) => (
-        <div key={i} className={s.inner}>
+        <div key={i} className={s.inner} aria-hidden={i !== 0 ?? undefined} data-nosnippet={i !== 0 ? "" : undefined}>
           {children}
         </div>
       ))}
