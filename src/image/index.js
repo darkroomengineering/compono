@@ -1,14 +1,37 @@
 import NextImage from 'next/image'
 
-export function Image({ className, style, loading = 'eager', objectFit = 'cover', quality = 90, alt = '', ...props }) {
+export const Image = ({
+  className,
+  style,
+  loading = 'eager',
+  objectFit = 'cover',
+  quality = 90,
+  alt = '',
+  fill,
+  width,
+  height,
+  src,
+  ...restProps
+}) => {
+  let ResolvedImage = NextImage
+
+  if ('default' in ResolvedImage) {
+    ResolvedImage = ResolvedImage.default
+  }
+
   return (
-    <NextImage
-      {...props}
+    <ResolvedImage
+      src={src}
       className={className}
-      style={{ objectFit, ...style }}
+      style={{ ...style }}
+      objectFit={objectFit}
       loading={loading}
       quality={quality}
       alt={alt}
+      fill={fill}
+      width={fill ? undefined : width}
+      height={fill ? undefined : height}
+      {...restProps}
     />
   )
 }

@@ -44,7 +44,7 @@
     "stats.js": "^0.17.0"
   },
   "peerDependencies": {
-    "next": "^13.4.9",
+    "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
