@@ -23,8 +23,7 @@ export const Image = ({
     <ResolvedImage
       src={src}
       className={className}
-      style={{ ...style }}
-      objectFit={objectFit}
+      style={{ objectFit, ...style }}
       loading={loading}
       quality={quality}
       alt={alt}
