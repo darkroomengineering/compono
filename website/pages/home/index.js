@@ -1,5 +1,5 @@
 import { Layout } from 'layouts/default'
-import { Accordion } from '../../../src'
+import { Accordion, Image } from '../../../src'
 import s from './home.module.scss'
 
 export default function Home() {
@@ -24,6 +24,13 @@ export default function Home() {
             ),
           )}
         </Accordion>
+      </section>
+      <section>
+        <Image
+          src="https://assets.studiofreight.com/devs/franco.png"
+          alt=""
+          fill
+        />
       </section>
     </Layout>
   )
