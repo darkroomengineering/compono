@@ -1,7 +1,6 @@
 export { Accordion } from './accordion/index.js'
 export { Cursor } from './cursor/index.js'
 export { CustomHead } from './custom-head/index.js'
-export { FixedSlides } from './fixed-slides/index.js'
 export { GridDebugger } from './grid-debugger/index.js'
 export { Image } from './media/image/index.js'
 export { ClientOnly, ServerOnly } from './isomorphic/index.js'
