@@ -1,9 +1,8 @@
+import { useRect, useWindowSize } from '@studio-freight/hamo'
 import { useLenis } from '@studio-freight/react-lenis'
 import { useEffect, useRef, useState } from 'react'
-import { useWindowSize } from '@studio-freight/hamo'
 import { clamp, mapRange } from '../../lib/maths'
 import s from './scrollbar.module.scss'
-import { useRect } from '@studio-freight/hamo'
 
 export function Scrollbar({
   theme = {
@@ -21,11 +20,14 @@ export function Scrollbar({
   const [innerMeasureRef, { height: innerHeight }] = useRect()
   const [thumbMeasureRef, { height: thumbHeight }] = useRect()
 
-  useLenis(({ scroll, limit }) => {
-    const progress = scroll / limit
+  useLenis(
+    ({ scroll, limit }) => {
+      const progress = scroll / limit
 
-    thumb.current.style.transform = `translate3d(0,${progress * (innerHeight - thumbHeight)}px,0)`
-  })
+      thumb.current.style.transform = `translate3d(0,${progress * (innerHeight - thumbHeight)}px,0)`
+    },
+    [innerHeight, thumbHeight],
+  )
 
   const [clicked, setClicked] = useState(false)
 
@@ -41,7 +43,7 @@ export function Scrollbar({
       const progress = clamp(0, y / innerHeight, 1)
       const newPos = lenis.limit * progress
 
-      lenis.direction === 'vertical' ? window.scrollTo(0, newPos) : window.scrollTo(newPos, 0)
+      lenis.isHorizontal ? window.scrollTo(newPos, 0) : window.scrollTo(0, newPos)
     }
 
     function onPointerUp() {
