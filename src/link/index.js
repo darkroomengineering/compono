@@ -20,7 +20,7 @@ export const Link = forwardRef(({ href, children, shallow, scroll, fallback = 'd
   const isExternal = href?.startsWith('http')
   const isProtocol = href?.startsWith('mailto:') || href?.startsWith('tel:')
 
-  if (!isExternal && !href?.startsWith('/')) {
+  if (!isExternal && !href?.startsWith('/') && !isProtocol) {
     href = `/${href}`
   }
 
