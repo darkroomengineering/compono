@@ -1,81 +1,88 @@
-import cn from 'clsx'
-import Autoplay from 'embla-carousel-autoplay'
-import useEmblaCarousel from 'embla-carousel-react'
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import s from './slider.module.scss'
+import BlazeSlider from 'blaze-slider'
+import 'blaze-slider/dist/blaze.css'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 
-//this folder is temp
-
-const SliderContext = createContext({})
+const BlazeSliderContext = createContext({})
 
 export function useSlider() {
-  return useContext(SliderContext)
+  return useContext(BlazeSliderContext)
 }
 
-export const Slider = ({ children, emblaApi = { autoplay: false }, enabled = true, customProps = {} }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const autoplay = Autoplay({ delay: emblaApi?.autoplay?.delay || null }, (emblaRoot) => emblaRoot.parentElement)
-  const [emblaRef, embla] = useEmblaCarousel(emblaApi, emblaApi.autoplay ? [autoplay] : [])
-
-  const scrollPrev = useCallback(() => {
-    embla && embla.scrollPrev()
-  }, [embla])
-
-  const scrollNext = useCallback(() => {
-    embla && embla.scrollNext()
-  }, [embla])
-
-  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [embla])
-
-  const getScrollProgress = useCallback(() => {
-    embla && setScrollProgress(Math.max(0, Math.min(1, embla.scrollProgress())))
-  }, [embla])
-
-  const getScrollSnap = useCallback(() => {
-    setCurrentIndex(embla.selectedScrollSnap())
-  }, [embla])
+export const Slider = ({ children, config = {}, enabled = true }) => {
+  const { elRef, scrollNext, scrollPrev, scrollTo, currentIndex, scrollProgress } = _useBlazeSlider(config)
 
   useEffect(() => {
-    if (embla) {
-      getScrollSnap()
-      getScrollProgress()
-      embla.on('select', getScrollSnap)
-      embla.on('scroll', getScrollProgress)
-      embla.on('reInit', getScrollProgress)
+    if (!enabled && elRef.current) {
+      // Assuming BlazeSlider has a destroy method
+      elRef.current.destroy()
     }
-  }, [embla])
-
-  useEffect(() => {
-    if (!enabled && embla) {
-      embla.destroy()
-    }
-  }, [embla, enabled])
+  }, [elRef, enabled])
 
   return (
-    <SliderContext.Provider
+    <BlazeSliderContext.Provider
       value={{
-        emblaRef,
+        elRef,
         currentIndex,
-        setCurrentIndex,
         scrollPrev,
         scrollNext,
         scrollTo,
         scrollProgress,
-        customProps,
       }}
     >
       {children}
-    </SliderContext.Provider>
+    </BlazeSliderContext.Provider>
   )
 }
 
+function _useBlazeSlider(config) {
+  const elRef = useRef()
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const sliderRef = useRef()
+
+  useEffect(() => {
+    if (!sliderRef.current) {
+      sliderRef.current = new BlazeSlider(elRef.current, config)
+
+      sliderRef.current.onSlide((pageIndex, firstVisibleSlideIndex, lastVisibleSlideIndex) => {
+        console.log(pageIndex, firstVisibleSlideIndex, lastVisibleSlideIndex)
+        setCurrentIndex(pageIndex)
+        const progress = pageIndex / (lastVisibleSlideIndex - firstVisibleSlideIndex)
+        console.log(progress)
+        setScrollProgress(progress)
+      })
+    }
+
+    return () => {
+      sliderRef.current && sliderRef.current.destroy()
+    }
+  }, [config])
+
+  const scrollNext = useCallback(() => {
+    sliderRef.current && sliderRef.current.next()
+  }, [])
+
+  const scrollPrev = useCallback(() => {
+    sliderRef.current && sliderRef.current.prev()
+  }, [])
+
+  const scrollTo = useCallback((index) => {
+    sliderRef.current && sliderRef.current.scrollTo(index)
+  }, [])
+
+  return { elRef, scrollNext, scrollPrev, scrollTo, currentIndex, scrollProgress }
+}
+
 const Slides = ({ children, className }) => {
-  const { emblaRef } = useSlider()
+  const { elRef } = useSlider()
 
   return (
-    <div className={cn(s.slider, className)} ref={emblaRef}>
-      <div className={s.container}>{children}</div>
+    <div className={className} ref={elRef}>
+      <div className="blaze-container">
+        <div className="blaze-track-container">
+          <div className="blaze-track">{children}</div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -19,7 +19,7 @@
 
 -- Docs: https://www.embla-carousel.com/
 -- Use emblaApi: to pass api library methods
--- autoScroll is the only method which not belongs to the library but is used in the same way, see example.
+-- autoplay is the only method which not belongs to the library but is used in the same way, see example.
 
 ## Example
 
@@ -30,18 +30,20 @@
     skipSnaps: false,
     align: 'start',
     loop: true,
-    autoScroll: true,
+    autoplay: {
+      delay: 1500 // in ms
+    },
   }}
 >
-  <Slider.Slides>
     {['slide me', 'slide me', 'slide me', 'slide me', 'slide me'].map(
       (item, i) => (
+  <Slider.Slides>
         <p className={s.slide} key={i}>
           {item}
         </p>
+  </Slider.Slides>
       ),
     )}
-  </Slider.Slides>
   <SliderButtons />
 </Slider>
 
@@ -53,7 +55,7 @@ const SliderButtons = () => {
       <button onClick={scrollPrev} className={s['slide-buttons']}>
         previous
       </button>
-      <button onClick={scrollPrev} className={s['slide-buttons']}>
+      <button onClick={scrollNext} className={s['slide-buttons']}>
         next
       </button>
     </div>

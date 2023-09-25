@@ -4,7 +4,6 @@ import cn from 'clsx'
 import { useStore } from 'libs/store'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { shallow } from 'zustand/shallow'
 import s from './navigation.module.scss'
 
 export function Navigation() {

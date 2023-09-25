@@ -1,39 +1,51 @@
 import { Layout } from 'layouts/default'
-import { Accordion, Media } from '../../../src'
+import { Slider, useSlider } from '../../../src'
 import s from './home.module.scss'
+
+const CustomSlide = ({ children, className }) => {
+  const { scrollProgress } = useSlider()
+
+  return (
+    <div className={className}>
+      {console.log(scrollProgress)}
+      {children}
+    </div>
+  )
+}
+
+const NextSlide = ({ children, className }) => {
+  const { scrollNext } = useSlider()
+
+  return (
+    <button onClick={scrollNext} className={className}>
+      {children}
+    </button>
+  )
+}
+
+const PrevSlide = ({ children, className }) => {
+  const { scrollPrev } = useSlider()
+
+  return (
+    <button onClick={scrollPrev} className={className}>
+      {children}
+    </button>
+  )
+}
 
 export default function Home() {
   return (
     <Layout theme="light">
       <section className={s.content}>
-        <Accordion type="single" collapsible={true} className={s.accordion}>
-          {[{ trigger: 'click me', content: 'show me' }].map(
-            ({ trigger, content }, idx) => (
-              <Accordion.Item
-                key={`accordion-item-${idx}`}
-                value={`accordion-item-${idx}`}
-                className={s.item}
-              >
-                <Accordion.Trigger className={s.trigger}>
-                  <p>{trigger}</p>
-                </Accordion.Trigger>
-                <Accordion.Content className={s.content}>
-                  <p>{content}</p>
-                </Accordion.Content>
-              </Accordion.Item>
-            ),
-          )}
-        </Accordion>
-      </section>
-      <section>
-        <Media
-          media={{
-            source: 'https://assets.studiofreight.com/devs/franco.png',
-            caption: 'Sith Arza',
-          }}
-          alt=""
-          fill
-        />
+        <Slider config={{ all: { enableAutoplay: false, slidesToShow: 2 } }}>
+          <PrevSlide>PrevSlide</PrevSlide>
+          <Slider.Slides>
+            <CustomSlide className={s.slide}>Slide 1</CustomSlide>
+            <CustomSlide className={s.slide}>Slide 2</CustomSlide>
+            <CustomSlide className={s.slide}>Slide 3</CustomSlide>
+          </Slider.Slides>
+          <NextSlide>NextSlide</NextSlide>
+        </Slider>
       </section>
     </Layout>
   )
