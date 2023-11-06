@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
-    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-select": "^2.0.0",
     "@studio-freight/hamo": "latest",
     "@studio-freight/react-lenis": "latest",
     "clsx": "^2.0.0",
@@ -37,7 +37,7 @@
     "gsap": "^3.12.2",
     "lottie-web": "^5.12.2",
     "next": "latest",
-    "next-seo": "^6.1.0",
+    "next-seo": "^6.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "latest",

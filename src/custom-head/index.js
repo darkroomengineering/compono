@@ -1,14 +1,7 @@
 import { NextSeo } from 'next-seo'
 import NextHead from 'next/head'
 
-export function CustomHead({
-  title,
-  description,
-  image,
-  keywords,
-  theme = { mask: '#ff00ff', tile: '#ff00ff', color: '#ff00ff' },
-  twitter = { handle: '@studiofreight' },
-}) {
+export function CustomHead({ title, description, image, keywords, twitter = { handle: '@studiofreight' } }) {
   return (
     <>
       <NextHead>
@@ -24,15 +17,10 @@ export function CustomHead({
         <meta name="geo.region" content="US" />
 
         {/* START FAVICON */}
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color={theme.mask} />
-        <meta name="msapplication-TileColor" content={theme.tile} />
-        <meta name="theme-color" content={theme.color} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
         {/* END FAVICON */}
 
         <title>{title}</title>
