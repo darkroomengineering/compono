@@ -1,6 +1,6 @@
 import NextImage from 'next/image'
 
-const Image = forwardRef(function Image(
+export const Image = forwardRef(function Image(
   {
     className,
     style,
