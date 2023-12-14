@@ -1,18 +1,21 @@
 import NextImage from 'next/image'
 
-export const Image = ({
-  className,
-  style,
-  loading = 'eager',
-  objectFit = 'cover',
-  quality = 90,
-  alt = '',
-  fill,
-  width,
-  height,
-  src,
-  ...restProps
-}) => {
+const Image = forwardRef(function Image(
+  {
+    className,
+    style,
+    loading = 'eager',
+    objectFit = 'cover',
+    quality = 90,
+    alt = '',
+    fill,
+    width,
+    height,
+    src,
+    ...restProps
+  },
+  ref,
+) {
   let ResolvedImage = NextImage
 
   if ('default' in ResolvedImage) {
@@ -21,6 +24,7 @@ export const Image = ({
 
   return (
     <ResolvedImage
+      ref={ref}
       src={src}
       className={className}
       style={{ objectFit, ...style }}
@@ -33,4 +37,4 @@ export const Image = ({
       {...restProps}
     />
   )
-}
+})
