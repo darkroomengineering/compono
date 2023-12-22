@@ -29,22 +29,21 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-select": "^2.0.0",
-    "@studio-freight/hamo": "latest",
-    "@studio-freight/react-lenis": "latest",
+    "@studio-freight/hamo": "^0.6.24",
+    "@studio-freight/react-lenis": "^0.0.38",
     "clsx": "^2.0.0",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "gsap": "^3.12.2",
     "lottie-web": "^5.12.2",
-    "next": "latest",
     "next-seo": "^6.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "latest",
+    "sass": "^1.69.5",
     "stats.js": "^0.17.0"
   },
   "peerDependencies": {
-    "next": "latest",
+    "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
