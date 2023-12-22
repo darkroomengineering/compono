@@ -3,6 +3,7 @@ import { Accordion, Media } from '../../../src'
 import s from './home.module.scss'
 
 export default function Home() {
+
   return (
     <Layout theme="light">
       <section className={s.content}>
@@ -25,7 +26,7 @@ export default function Home() {
           )}
         </Accordion>
       </section>
-      <section>
+      <section className={s.media}>
         <Media
           media={{
             source: 'https://assets.studiofreight.com/devs/franco.png',

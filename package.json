@@ -37,8 +37,6 @@
     "gsap": "^3.12.2",
     "lottie-web": "^5.12.2",
     "next-seo": "^6.4.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "sass": "^1.69.5",
     "stats.js": "^0.17.0"
   },
@@ -48,6 +46,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "latest"
+    "@next/bundle-analyzer": "^14.0.4"
   }
 }
