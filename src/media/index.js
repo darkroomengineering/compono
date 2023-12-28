@@ -13,7 +13,7 @@ const extensions = [
 ]
 
 const belongsTo = (extension) =>
-  extensions.find(({ extensions }) => extensions.some((filetype) => extension.includes(filetype))).type
+  extensions.find(({ extensions }) => extensions.some((filetype) => extension.includes(filetype)))?.type
 
 export const Media = ({ className, media, onLoad, ...props }) => {
   if (!media?.source) return null
