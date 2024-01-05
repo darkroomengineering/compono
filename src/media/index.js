@@ -30,9 +30,10 @@ export const Media = ({ className, media, onLoad, ...props }) => {
 }
 
 const options = {
-  IsImage: function ({ className, media, onLoad, ...props }) {
+  IsImage: function ({ className, media, onLoad, style = {}, ...props }) {
     return (
       <Image
+        style={{ display: 'block', ...style }}
         className={className}
         src={media.source}
         alt={media.caption}
