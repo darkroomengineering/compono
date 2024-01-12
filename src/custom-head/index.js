@@ -6,10 +6,9 @@ export function CustomHead({ title, description, image, keywords, twitter = { ha
     <>
       <NextHead>
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="robots" content={process.env.NODE_ENV !== 'development' ? 'index,follow' : 'noindex,nofollow'} />
         <meta name="googlebot" content={process.env.NODE_ENV !== 'development' ? 'index,follow' : 'noindex,nofollow'} />
-
         <meta name="keywords" content={keywords && keywords.length ? keywords.join(',') : keywords} />
         <meta name="author" content="Studio Freight" />
         <meta name="referrer" content="no-referrer" />
